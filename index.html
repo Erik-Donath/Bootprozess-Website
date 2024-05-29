@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de" xml:lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Bootprozess</title>
+    <style>
+        body {
+            background-image: url('./assets/daten.webp'); /* Hintergrundbild-URL hier einfügen */
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(1px);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /*padding: 40px;*/
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .container h1 {
+            font-family: Arial, sans-serif;
+            color: white;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .container p {
+            font-family: Arial, sans-serif;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .button {
+            padding: 12px 24px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="./quiz.html">Quiz</a>
+            <a href="./quellen.html">Quellen</a>
+            <a href="./impresum.html">Impresum</a>
+            <a href="boot/generel.html">Bootprozess</a>
+            <a class="active" href="./index.html">Startpage</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Willkommen!</h1>
+            <p>Willkommen auf der Seite. Hier erfahren Sie mehr über den Bootprozess am Beispiel Windows und Linux. Um mehr zu erfahren klicken Sie bitte auf Info. Nach dem Lesen können Sie auch gerne an unserem Quiz teilnehmen. Dafür können Sie den Button Quiz nutzen.</p>
+            <div class="buttons">
+                <a href="boot/generel.html" class="button">Info</a>
+                <a href="./quiz.html" class="button">Quiz</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <p class="white">&copy; 2024 Erik Donath. All rights reserved. <a class="underlined white" href="./impresum.html">Impresum</a></p>
+        </div>
+    </footer>
+</body>
+</html>
