@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% set title = "Home" %}
+{% set text_class = "white" %}
+{% block head %}
+    <style>
+    body {
+        /*background-image: url("{{ url_for('static', filename='assets/daten.webp') }}");*/
+        background-image: url("{{ url_for('static', filename='assets/GIF.gif') }}");
+    } /* url_for gibt es in css nicht darum muss es für's erste so deklariert werden.*/
+    </style>
+{% endblock %}
+{% block main %}
+    <br>
+	<div class="centered-container">
+        <h1>Willkommen!</h1>
+        <p>Hier erfahren Sie mehr über den Bootprozess am Beispiel Windows und Linux. Um mehr zu erfahren, klicken Sie bitte auf Info. Nach dem Lesen können Sie auch gerne an unserem Quiz teilnehmen. Dafür können Sie den Button Quiz nutzen.</p>
+        <br>
+        <div class="align-center form">
+            <a href="boot/">Info</a>
+            <a href="quiz/">Quiz</a>
+        </div>
+    </div>
+{% endblock %}

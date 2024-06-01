@@ -1,0 +1,15 @@
+.impressum {
+    border-radius: 0;
+    padding: 20px;
+}
+
+.kontakt {
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+}
+
+.title {
+    padding: 4px 4px;
+    text-align: left;
+    font-size: 34px;
+}

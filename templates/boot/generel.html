@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% set title = "Bootprozess - Generel" %}
+{% set text_class = "white" %}
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/boot.css') }}">
+{% endblock %}
+{% block header %}
+    <div class="navbar subbar small">
+        <ul>
+            <li class="left"><a class="active" href="/boot/generel"><b>Generel</b></a></li>
+            <li class="left"><a href="/boot/windows"><b>Windows</b></a></li>
+            <li class="left"><a href="/boot/linux"><b>Linux</b></a></li>
+        </ul>
+    </div>
+{% endblock %}
+{% block main %}
+     <div class="timeline">
+        <div class="container content-left">
+            <div class="content">
+                <h2>BIOS / UEFI</h2>
+                <p>Das BIOS (Basic Input Output System) oder heutzutage das UEFI ist das erste Programm das der Computer startet. Es sammelt einige Systemdaten und setzt die Grundfunktionen auf. Dannach lädt er die erstern 512 bytes des Betriebsystems.</p>
+                <img src="{{ url_for('static', filename='assets/bios.jpg') }}" alt="Ein Bild das ein Bios zeigt. Genauer gesagt zeigt es ein" width="75%" height="75%">
+            </div>
+        </div>
+        <div class="container content-right">
+            <div class="content">
+                <h2>Bootsector / Bootloader</h2>
+                <p>Der Bootloader ist der erste Sector der sog. Bootsector. Dieser hat die Hauptaufgabe den Rest des Betriebsystems zu laden. Auserdem kann der Bootloader System Information laden. => Der Bootloader lädt den Kernel.</p>
+                <img src="{{ url_for('static', filename='assets/bootsector.jpg') }}" alt="Ein Bild eines Bootloaders." width="75%" height="75%">
+            </div>
+        </div>
+        <div class="container content-left">
+            <div class="content">
+                <h2>Kernel</h2>
+                <p>...</p>
+            </div>
+        </div>
+        <div class="container content-right">
+            <div class="content">
+                <h2>Treiber</h2>
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

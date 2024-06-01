@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% set title = "Quellen" %}
+{% set text_class = "black" %}
+{% block head %}
+	<style>
+    .quellen {
+        font-size: 40px;
+        padding: 20px;
+        list-style: none;
+    }
+    </style>
+{% endblock %}
+{% block main %}
+    <ul class="quellen">
+        <li>Quelle 1 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
+        <li>Quelle 2 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
+        <li>Quelle 3 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
+        <li>Quelle 4 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
+    </ul>
+{% endblock %}

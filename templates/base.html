@@ -1,0 +1,39 @@
+{% set text_class = text_class if text_class else "black" %}
+<!DOCTYPE html>
+<html lang="de" xml:lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <ul>
+                    <li class="left "><a {% if route=="index"       %}class="active"{% endif %} href="/index"><b>Home</b></a></li>
+                    <li class="left "><a {% if route=="boot"        %}class="active"{% endif %} href="/boot/generel"><b>Bootprozess</b></a></li>
+                    <li class="left "><a {% if route=="impresum"    %}class="active"{% endif %} href="/impresum"><b>Impressum</b></a></li>
+                    <li class="left "><a {% if route=="quellen"     %}class="active"{% endif %} href="/quellen"><b>Quellen</b></a></li>
+                    <li class="right"><a {% if route=="leaderboard" %}class="active"{% endif %} href="/quiz/leaderboard"><b>Leaderboard</b></a></li>
+                    <li class="right"><a {% if route=="quiz"        %}class="active"{% endif %} href="/quiz/quiz"><b>Quiz</b></a></li>
+                </ul>
+            </nav>
+            {% block header %}
+            {% endblock %}
+        </header>
+        <main>
+            {% block main %}
+            {% endblock %}
+        </main>
+        <footer>
+            {% block footer %}
+            {% endblock %}
+            <p class="copyright {{ text_class }}">&copy; 2024 Erik Donath. All rights reserved. <a class="underlined {{ text_class }}" href="/impresum">Impresum</a></p>
+        </footer>
+    </body>
+</html>

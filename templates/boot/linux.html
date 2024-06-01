@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% set title = "Bootprozess - Linux" %}
+{% set text_class = "white" %}
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/boot.css') }}">
+{% endblock %}
+{% block header %}
+    <div class="navbar subbar small">
+        <ul>
+            <li class="left"><a href="/boot/generel"><b>Generel</b></a></li>
+            <li class="left"><a href="/boot/windows"><b>Windows</b></a></li>
+            <li class="left"><a class="active" href="/boot/linux"><b>Linux</b></a></li>
+        </ul>
+    </div>
+{% endblock %}
+{% block main %}
+     <div class="timeline">
+        <div class="container content-left">
+            <div class="content">
+                <h2>A</h2>
+                <p>B</p>
+            </div>
+        </div>
+        <div class="container content-right">
+            <div class="content">
+                <h2>C</h2>
+                <p>D</p>
+            </div>
+        </div>
+        <div class="container content-left">
+            <div class="content">
+                <h2>E</h2>
+                <p>F</p>
+            </div>
+        </div>
+        <div class="container content-right">
+            <div class="content">
+                <h2>G</h2>
+                <p>H</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

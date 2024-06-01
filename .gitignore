@@ -1,2 +1,5 @@
 .idea/
 .vs/
+instance/
+__pycache__/
+app/__pycache__/

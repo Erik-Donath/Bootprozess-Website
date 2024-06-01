@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Quiz{% endblock %}
+{% block head %}
+	<style>
+        .question p, a, label, input {
+            text-decoration: none;
+        }
+        .question-title {
+            font-weight: bold;
+            font-size: 20pt;
+        }
+    </style>
+{% endblock %}
+{% block main %}
+    <div class="quiz">
+        <form class="centered-container form" action="/quiz/quiz" method="post">
+            <div class="question">
+                <p class="question-title">Frage 1</p>
+                <label for="q1-1">Antwort 1</label>
+                <input type="checkbox" id="q1-1" name="q1-1"><br>
+                <label for="q1-2">Antwort 2</label>
+                <input type="checkbox" id="q1-2" name="q1-2"><br>
+                <label for="q1-3">Antwort 3</label>
+                <input type="checkbox" id="q1-3" name="q1-3"><br>
+            </div><br>
+            <div class="question">
+                <p class="question-title">Frage 2</p>
+                <label for="q2-1">Antwort 1</label>
+                <input type="checkbox" id="q2-1" name="q2-1"><br>
+                <label for="q2-2">Antwort 2</label>
+                <input type="checkbox" id="q2-2" name="q2-2"><br>
+                <label for="q2-3">Antwort 3</label>
+                <input type="checkbox" id="q2-3" name="q2-3"><br>
+            </div><br>
+            <div class="form align-center">
+                <input type="submit" value="Absenden">
+                <a href="/quiz/leaderboard">Leaderboard</a>
+            </div><br>
+        </form>
+    </div>
+{% endblock %}
