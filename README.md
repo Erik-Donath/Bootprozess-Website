@@ -12,7 +12,7 @@ Diese Website ist in Flask unter Python geschrieben worden. Sie enthält:
 - Quiz mit Leaderboard und Registrierung
 
 ## Architektur
-Die App befindet sich als Python Packet unter 'app/'. Alle HTML Templates befinden sich dann unter 'templates/' und alle verwendeten js, css und andere assets befinden sich unter 'static/'.
+Die App befindet sich als Python Packet unter 'app/'. Alle HTML Templates befinden sich dann unter 'app/templates/' und alle verwendeten js, css und andere assets befinden sich unter 'app/static/'.
 Die Dateien 'app/main.py' und 'app/quiz.py' enthalten die jeweiligen Endpunkte sowie weiter funktionalitäten.
 
 ## Instance
