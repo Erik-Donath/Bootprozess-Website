@@ -1,17 +1,8 @@
-from flask import Flask, Blueprint, redirect, url_for, render_template, jsonify, request, session
+from flask import Blueprint, redirect, url_for, render_template, jsonify, request, session
 from flask_sqlalchemy import SQLAlchemy
 
-import app.routes as routes
-
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = "x=-p/2+sqrt((p/2)^2-q)"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Users.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.register_blueprint(routes.routes)
-
-db = SQLAlchemy(app)
+routes = Blueprint('quiz', __name__)
+db = SQLAlchemy()
 
 
 class Users(db.Model):
@@ -38,41 +29,7 @@ class LeaderboardEntry:
         self.score = score
 
 
-@app.route('/')
-@app.route('/index')
-def home():
-    return render_template('index.html', route="index")
-
-
-@app.route('/impresum', methods=['GET', 'POST'])
-def impresum():
-    if request.method == 'POST':
-        print(f"Kontakt: '{request.form['firstname']} {request.form['lastname']}': {request.form['subject']}")
-    return render_template('impresum.html', route="impresum")
-
-
-@app.route('/quellen')
-def quellen():
-    return render_template('quellen.html', route="quellen")
-
-
-@app.route('/boot/')
-@app.route('/boot/generel')
-def boot_general():
-    return render_template('boot/generel.html', route="boot")
-
-
-@app.route('/boot/windows')
-def boot_windows():
-    return render_template('boot/windows.html', route="boot")
-
-
-@app.route('/boot/linux')
-def boot_linux():
-    return render_template('boot/linux.html', route="boot")
-
-
-@app.route('/quiz/leaderboard', methods=['GET', 'POST'])
+@routes.route('/quiz/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     users = Users.query.all()
     board = [LeaderboardEntry(user.name, user.score) for user in users]
@@ -91,11 +48,11 @@ def leaderboard():
         return render_template('quiz/leaderboard.html', route="leaderboard", board=board)
 
 
-@app.route('/quiz/register', methods=['GET', 'POST'])
+@routes.route('/quiz/register', methods=['GET', 'POST'])
 def register():
     # Dont register if already logged in
     if session.get('username'):
-        return redirect(url_for('quiz'))
+        return redirect(url_for('quiz.quiz'))
 
     if not request.method == 'POST':
         return render_template('quiz/register.html', route="quiz", failed=None)
@@ -119,21 +76,21 @@ def register():
     session["username"] = usr.name
     session["email"] = usr.email
 
-    return redirect(url_for('quiz'))
+    return redirect(url_for('quiz.quiz'))
 
 
-@app.route('/quiz/', methods=['GET', 'POST'])
-@app.route('/quiz/quiz', methods=['GET', 'POST'])
+@routes.route('/quiz/', methods=['GET', 'POST'])
+@routes.route('/quiz/quiz', methods=['GET', 'POST'])
 def quiz():
     if not session.get('username'):
-        return redirect(url_for('register'))
+        return redirect(url_for('quiz.register'))
     if request.method == 'POST':
         score = calculateScore(request.form)
 
         Users.query.filter_by(name=session['username']).update({'score': score})
         db.session.commit()
 
-        return redirect(url_for('leaderboard'))
+        return redirect(url_for('quiz.leaderboard'))
     else:
         return render_template('quiz/quiz.html', route="quiz")
 
@@ -157,9 +114,3 @@ def calculateScore(form: dict):
             score += set(answers) == set(results[name]) if len(answers) else 0
 
     return score
-
-
-with app.app_context():
-    db.create_all()
-if __name__ == '__main__':
-    app.run(debug=True)

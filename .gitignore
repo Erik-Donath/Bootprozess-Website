@@ -1,5 +1,8 @@
 .idea/
 .vs/
+
+.venv/
 instance/
 __pycache__/
+
 app/__pycache__/
