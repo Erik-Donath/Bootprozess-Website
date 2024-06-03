@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% set title = "Benutzer" %}
+{% set text_class = "black" %}
+{% block main %}
+    <div class="centered-container form">
+        <h1>Benutzer</h1>
+        <h3>Dein Score: {{ user.score }}</h3><br>
+
+        <div class = "form selection">
+            <a class="small" href="/account/logout">Ausloggen</a>
+            <a class="small" href="/quiz/quiz">Am Quiz teilnehmen</a>
+            <a class="small" href="/quiz/leaderboard">Zum Leaderboard</a>
+        </div>
+        <br>
+    </div>
+{% endblock %}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Quiz{% endblock %}
+{% set title = "Quiz" %}
+{% set text_class = "black" %}
 {% block head %}
 	<style>
         .question p, a, label, input {
@@ -17,23 +18,24 @@
             <div class="question">
                 <p class="question-title">Frage 1</p>
                 <label for="q1-1">Antwort 1</label>
-                <input type="checkbox" id="q1-1" name="q1-1"><br>
+                <input type="checkbox" id="q1-1" name="q1_1"><br>
                 <label for="q1-2">Antwort 2</label>
-                <input type="checkbox" id="q1-2" name="q1-2"><br>
+                <input type="checkbox" id="q1-2" name="q1_2"><br>
                 <label for="q1-3">Antwort 3</label>
-                <input type="checkbox" id="q1-3" name="q1-3"><br>
+                <input type="checkbox" id="q1-3" name="q1_3"><br>
             </div><br>
             <div class="question">
                 <p class="question-title">Frage 2</p>
                 <label for="q2-1">Antwort 1</label>
-                <input type="checkbox" id="q2-1" name="q2-1"><br>
+                <input type="checkbox" id="q2-1" name="q2_1"><br>
                 <label for="q2-2">Antwort 2</label>
-                <input type="checkbox" id="q2-2" name="q2-2"><br>
+                <input type="checkbox" id="q2-2" name="q2_2"><br>
                 <label for="q2-3">Antwort 3</label>
-                <input type="checkbox" id="q2-3" name="q2-3"><br>
+                <input type="checkbox" id="q2-3" name="q2_3"><br>
             </div><br>
-            <div class="form align-center">
-                <input type="submit" value="Absenden">
+            <div class="form align-center small">
+                {{ form.hidden_tag() }}
+                {{ form.submit() }}
                 <a href="/quiz/leaderboard">Leaderboard</a>
             </div><br>
         </form>

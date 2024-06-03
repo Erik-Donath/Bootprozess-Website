@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% set title = "Login" %}
+{% set text_class = "black" %}
+{% block main %}
+    <div class="centered-container form">
+        {% if not failed or failed == "none" %}
+            <form action="/account/login" method="post">
+                <h1>Login</h1><br>
+                <label for="username">Nutzname</label>
+                <input type="text" id="username" name="username" placeholder="Dein Nutzername" maxlength="15" required><br>
+                <label for="password">Passwort</label>
+                <input type="password" id="password" name="password" placeholder="Deine sicheres Passwort" required><br>
+                {{ form.hidden_tag() }}
+                {{ form.submit() }}
+                <a class="small" href="/account/register">Zur Registrierung</a>
+            </form>
+            <br>
+        {% else %}
+            <h1>Ein Fehler ist aufgetreten</h1>
+            {% if   failed=="validation"     %}<p>Bitte gebe die Daten vollständig ein. Begründung:</p><ul>{% for reason in reasons %}<li>{{ reason }}</li>{% endfor %}</ul>
+            {% elif failed=="not_exist"      %}<p>Der Nutzername wurde nicht gefunden.</p>
+            {% elif failed=="wrong_password" %}<p>Das Passwort ist falsch.</p>
+            {% else %}<p>Beep! Boop! Fehler!</p><br><p>Fehler Code: '{{ failed }}'</p>{% endif %}
+            <a class="small" href="/account/login">Zurück zur Loginseite</a>
+            <br>
+        {% endif %}
+    </div>
+{% endblock %}

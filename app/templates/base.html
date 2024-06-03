@@ -1,6 +1,9 @@
+{% set lang = lang if lang else "de" %}
+{% set title = title if title else "Seite ohne Titel" %}
 {% set text_class = text_class if text_class else "black" %}
+
 <!DOCTYPE html>
-<html lang="de" xml:lang="de">
+<html lang="{{ lang }}" xml:lang="{{ lang }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -19,6 +22,14 @@
                     <li class="left "><a {% if route=="boot"        %}class="active"{% endif %} href="/boot/generel"><b>Bootprozess</b></a></li>
                     <li class="left "><a {% if route=="impresum"    %}class="active"{% endif %} href="/impresum"><b>Impressum</b></a></li>
                     <li class="left "><a {% if route=="quellen"     %}class="active"{% endif %} href="/quellen"><b>Quellen</b></a></li>
+
+                    <li class="right profile">
+                        <a class="{% if route=="account"%}active{% endif %}" href="/account/view">
+                            <img src="{{ url_for('static', filename='assets/profile.svg') }}" alt="" width="32" height="32">
+                            <p><b>Account</b></p>
+                        </a>
+                    </li>
+
                     <li class="right"><a {% if route=="leaderboard" %}class="active"{% endif %} href="/quiz/leaderboard"><b>Leaderboard</b></a></li>
                     <li class="right"><a {% if route=="quiz"        %}class="active"{% endif %} href="/quiz/quiz"><b>Quiz</b></a></li>
                 </ul>

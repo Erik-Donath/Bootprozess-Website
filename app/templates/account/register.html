@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% set title = "Registrieren" %}
+{% set text_class = "black" %}
+{% block main %}
+    <div class="centered-container form">
+        {% if not failed or failed == "none" %}
+            <form action="/account/register" method="post">
+                <h1>Registrieren</h1><br>
+                <label for="username">Nutzname</label>
+                <input type="text" id="username" name="username" placeholder="Dein Nutzername" maxlength="15" required><br>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Deine Email" maxlength="50" required><br>
+                <label for="password">Passwort</label>
+                <input type="password" id="password" name="password" placeholder="Deine sicheres Passwort" required><br>
+                {{ form.hidden_tag() }}
+                {{ form.submit() }}
+                <a class="small" href="/account/login">Zum Login</a>
+            </form>
+            <br>
+        {% else %}
+            <h1>Ein Fehler ist aufgetreten</h1>
+            {% if   failed=="validation"    %}<p>Bitte gebe die Daten vollständig ein. Begründung:</p><ul>{% for reason in reasons %}<li>{{ reason }}</li>{% endfor %}</ul>
+            {% elif failed=="already_exist" %}<p>Der Nutzername oder die E-Mail sind bereits vergeben worden.</p>
+            {% else %}<p>Beep! Boop! Fehler!</p><br><p>Fehler Code: '{{ failed }}'</p>{% endif %}
+            <a class="small" href="/account/register">Zurück zur Registrierseite</a>
+            <br>
+        {% endif %}
+    </div>
+{% endblock %}
