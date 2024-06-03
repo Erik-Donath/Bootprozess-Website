@@ -10,9 +10,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 10px 5px;
     border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
 }
+
+.user-you {
+    background-color: #c3e9f4;
+    padding: 10px 5px;
+    border-radius: 2px;
+}
+
 .user .username {
     font-weight: bold;
 }

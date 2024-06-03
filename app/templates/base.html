@@ -25,7 +25,8 @@
 
                     <li class="right profile">
                         <a class="{% if route=="account"%}active{% endif %}" href="/account/view">
-                            <img src="{{ url_for('static', filename='assets/profile.svg') }}" alt="" width="32" height="32">
+                            {% set profile_img_src = "assets/profiles/" + profile.icon|string + ".png" if profile else "assets/profile.svg" %}
+                            <img src="{{ url_for('static', filename=profile_img_src) }}" alt="Profile Icon" width="32" height="32">
                             <p><b>Account</b></p>
                         </a>
                     </li>
@@ -37,10 +38,12 @@
             {% block header %}
             {% endblock %}
         </header>
+        <br>
         <main>
             {% block main %}
             {% endblock %}
         </main>
+        <br>
         <footer>
             {% block footer %}
             {% endblock %}

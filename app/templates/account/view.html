@@ -1,12 +1,50 @@
 {% extends 'base.html' %}
-{% set title = "Benutzer" %}
+{% set title = "Einstellungen"%}
 {% set text_class = "black" %}
+{% block head %}
+    <style>
+    .profile-icon {
+        a {
+            border: none;
+            border-radius: 0;
+            padding: 70px 0 0 0;
+            margin: 10px 0;
+            background-color: #ffffff;
+        }
+        a:hover {
+            background-color: #00a0d6;
+            border: white;
+            border-radius: 5px;
+        }
+    }
+    </style>
+{% endblock %}
 {% block main %}
     <div class="centered-container form">
-        <h1>Benutzer</h1>
-        <h3>Dein Score: {{ user.score }}</h3><br>
+        <h1>Einstellungen - {{ profile.name }}</h1>
+        <p>Hier kannst du nach Belieben dein Account verändern.</p>
+        <p>Dein Score ist: {{ profile.score }}</p>
 
         <div class = "form selection">
+            <div class="profile-icon">
+                <h2>Ändere dein Aussehen</h2>
+                <a class="small" href="/account/set/icon/1"><img src="{{ url_for('static', filename="assets/profiles/1.png") }}" alt ="Profil 1" width="80" height="80"></a>
+                <a class="small" href="/account/set/icon/2"><img src="{{ url_for('static', filename="assets/profiles/2.png") }}" alt ="Profil 2" width="80" height="80"></a>
+                <a class="small" href="/account/set/icon/3"><img src="{{ url_for('static', filename="assets/profiles/3.png") }}" alt ="Profil 3" width="80" height="80"></a>
+                <a class="small" href="/account/set/icon/4"><img src="{{ url_for('static', filename="assets/profiles/4.png") }}" alt ="Profil 4" width="80" height="80"></a>
+            </div>
+            <form action="/account/set/data" method="post">
+                <h2>Ändere deinen Namen / E-Mail</h2>
+                <label for="username">Name</label>
+                <input id="username" name="username" type="text" placeholder="Dein Name" value="{{ profile.name }}">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Deine E-Mail" value="{{ profile.email }}">
+                <label for="password">Passwort</label>
+                <input id="password" name="password" type="password" placeholder="Dein Password" value="" required>
+                {{ form.hidden_tag() }}
+                {{ form.submit() }}
+            </form>
+            <br><br>
             <a class="small" href="/account/logout">Ausloggen</a>
             <a class="small" href="/quiz/quiz">Am Quiz teilnehmen</a>
             <a class="small" href="/quiz/leaderboard">Zum Leaderboard</a>

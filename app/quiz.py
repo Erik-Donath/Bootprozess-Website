@@ -2,7 +2,8 @@ from flask import Blueprint, redirect, url_for, render_template, jsonify, reques
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, BooleanField
 
-from .database import db, Users
+from .database import Users
+from .user import Profile
 
 blueprint = Blueprint('quiz', __name__)
 
@@ -34,7 +35,7 @@ class Quiz(FlaskForm):
 @blueprint.route('/quiz/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     users = Users.query.all()
-    board = [Entry(user.username, user.score) for user in users]
+    board = [Entry(user.name, user.score) for user in users]
     board = sorted(board, key=lambda entry: entry.score, reverse=True)
 
     if request.method == 'POST':
@@ -44,10 +45,10 @@ def leaderboard():
             'entry_count': len(board),
             'max_score': board[0].score,
             'min_score': board[-1].score
-        }
-        )
+        })
+        # Weil APIs cool sind. Wird safe irgendwer in naher Zukunft brauchen.
     else:
-        return render_template('quiz/leaderboard.html', route="leaderboard", board=board)
+        return render_template('quiz/leaderboard.html', route="leaderboard", board=board, profile=Profile.getProfile())
 
 
 @blueprint.route('/quiz/', methods=['GET', 'POST'])
@@ -57,14 +58,15 @@ def quiz():
         return redirect(url_for('account.login'))
 
     if request.method != 'POST':
-        return render_template('quiz/quiz.html', route="quiz", form=Quiz())
+        return render_template('quiz/quiz.html', route="quiz", form=Quiz(), profile=Profile.getProfile())
 
-    user = Users.query.filter_by(id=session.get('id')).first()
-    if not user:
-        return redirect(url_for('account.logout'))
+    score = calculateScore(request.form)
+    res = Profile.updateScore(score)
 
-    user.score = calculateScore(request.form)
-    db.session.commit()
+    if res == 1:
+        return redirect(url_for('account.login'))
+    if res == 2:
+        return redirect(url_for('account.register'))
 
     return redirect(url_for('quiz.leaderboard'))
 

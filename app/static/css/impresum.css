@@ -1,11 +1,11 @@
 .impressum {
     border-radius: 0;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .kontakt {
     border-radius: 0 0 5px 5px;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .title {
