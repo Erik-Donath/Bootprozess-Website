@@ -46,7 +46,7 @@
 
 @media screen and (max-width: 700px) {
   .navbar li.right,
-  .navbar li {float: none;}
-  .profile img { display: none; }
-  .profile p { display: block; }
+  .navbar li { float: none; }
+  .profile img { float: right; padding-top: 10px }
+  .profile p { display: block; padding-left: 32px }
 }

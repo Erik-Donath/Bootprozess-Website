@@ -92,9 +92,10 @@ class Profile:
         if not session.get('logged_in'):
             return 1
 
-        Users.query.filter_by(id=Profile.getProfile().id).delete()
+        Users.query.filter_by(id=session.get('profile')['id']).delete()
         db.session.commit()
 
+        session['logged_in'] = False #Just in Case
         Profile.logout()
         return 0
 
