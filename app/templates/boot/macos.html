@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% set title = "Bootprozess - Linux" %}
+{% set title = "Bootprozess - MacOS" %}
 {% set text_class = "white" %}
 {% block head %}
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/boot.css') }}">
@@ -8,8 +8,8 @@
     <div class="navbar subbar small">
         <ul>
             <li class="left"><a href="/boot/windows"><b>Windows</b></a></li>
-            <li class="left"><a class="active" href="/boot/linux"><b>Linux</b></a></li>
-            <li class="left"><a href="/boot/macos"><b>MacOS</b></a></li>
+            <li class="left"><a href="/boot/linux"><b>Linux</b></a></li>
+            <li class="left"><a class="active" href="/boot/macos"><b>MacOS</b></a></li>
         </ul>
     </div>
 {% endblock %}

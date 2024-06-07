@@ -42,11 +42,6 @@ def quellen():
 
 
 @blueprint.route('/boot/')
-@blueprint.route('/boot/generel')
-def boot_general():
-    return render_template('boot/generel.html', route="boot", profile=Profile.getProfile())
-
-
 @blueprint.route('/boot/windows')
 def boot_windows():
     return render_template('boot/windows.html', route="boot", profile=Profile.getProfile())
@@ -55,3 +50,8 @@ def boot_windows():
 @blueprint.route('/boot/linux')
 def boot_linux():
     return render_template('boot/linux.html', route="boot", profile=Profile.getProfile())
+
+
+@blueprint.route('/boot/macos')
+def boot_general():
+    return render_template('boot/macos.html', route="boot", profile=Profile.getProfile())

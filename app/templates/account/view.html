@@ -23,7 +23,7 @@
     <div class="centered-container form">
         <h1>Einstellungen - {{ profile.name }}</h1>
         <p>Hier kannst du nach Belieben dein Account verändern.</p>
-        <p>Dein Score ist: {{ profile.score }}</p>
+        <p><b>Dein Score ist: {{ profile.score }}</b></p>
 
         <div class = "form selection">
             <div class="profile-icon">
@@ -33,17 +33,6 @@
                 <a class="small" href="/account/set/icon/3"><img src="{{ url_for('static', filename="assets/profiles/3.png") }}" alt ="Profil 3" width="80" height="80"></a>
                 <a class="small" href="/account/set/icon/4"><img src="{{ url_for('static', filename="assets/profiles/4.png") }}" alt ="Profil 4" width="80" height="80"></a>
             </div>
-            <form action="/account/set/data" method="post">
-                <h2>Ändere deinen Namen / E-Mail</h2>
-                <label for="username">Name</label>
-                <input id="username" name="username" type="text" placeholder="Dein Name" value="{{ profile.name }}">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="Deine E-Mail" value="{{ profile.email }}">
-                <label for="password">Passwort</label>
-                <input id="password" name="password" type="password" placeholder="Dein Password" value="" required>
-                {{ form.hidden_tag() }}
-                {{ form.submit() }}
-            </form>
             <br><br>
             <a class="small" href="/account/logout">Ausloggen</a>
             <a class="small" href="/quiz/quiz">Am Quiz teilnehmen</a>

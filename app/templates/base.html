@@ -19,13 +19,13 @@
             <nav class="navbar">
                 <ul>
                     <li class="left "><a {% if route=="index"       %}class="active"{% endif %} href="/index"><b>Home</b></a></li>
-                    <li class="left "><a {% if route=="boot"        %}class="active"{% endif %} href="/boot/generel"><b>Bootprozess</b></a></li>
+                    <li class="left "><a {% if route=="boot"        %}class="active"{% endif %} href="/boot/windows"><b>Bootprozess</b></a></li>
                     <li class="left "><a {% if route=="impresum"    %}class="active"{% endif %} href="/impresum"><b>Impressum</b></a></li>
                     <li class="left "><a {% if route=="quellen"     %}class="active"{% endif %} href="/quellen"><b>Quellen</b></a></li>
 
                     <li class="right profile">
                         <a class="{% if route=="account"%}active{% endif %}" href="/account/view">
-                            {% set profile_img_src = "assets/profiles/" + profile.icon|string + ".png" if profile else "assets/profile.svg" %}
+                            {% set profile_img_src = "assets/profiles/" + (profile.icon|string + ".png" if profile else "default.svg") %}
                             <img src="{{ url_for('static', filename=profile_img_src) }}" alt="Profile Icon" width="32" height="32">
                             <p><b>Account</b></p>
                         </a>

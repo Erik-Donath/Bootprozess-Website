@@ -6,14 +6,12 @@ from .database import db, Users
 class Profile:
     id: int
     name: str
-    email: str
     icon: int
     score: int
 
-    def __init__(self, id, name, email, icon, score):
+    def __init__(self, id, name, icon, score):
         self.id = id
         self.name = name
-        self.email = email
         self.icon = icon
         self.score = score
 
@@ -25,7 +23,7 @@ class Profile:
         if not session.get('logged_in'):
             return None
         profile = session.get('profile')
-        return Profile(profile['id'], profile['name'], profile['email'], profile['icon'], profile['score'])
+        return Profile(profile['id'], profile['name'], profile['icon'], profile['score'])
 
     @staticmethod
     def getUser() -> Users | None:
@@ -57,7 +55,7 @@ class Profile:
             return 2
 
         session['logged_in'] = True
-        session['profile'] = {'id': user.id, 'name': user.name, 'email': user.email, 'icon': user.icon, 'score': user.score}
+        session['profile'] = {'id': user.id, 'name': user.name, 'icon': user.icon, 'score': user.score}
 
     @staticmethod
     def logout() -> None:
@@ -69,20 +67,19 @@ class Profile:
     # 1 => already Logged in
     # 2 => already exist
     @staticmethod
-    def register(name: str, email: str, password: str) -> int:
+    def register(name: str, password: str) -> int:
         if session.get('logged_in'):
             return 1
 
-        if (Users.query.filter_by(name=name).first()
-                or Users.query.filter_by(email=email).first()):
+        if Users.query.filter_by(name=name).first():
             return 2
 
-        user = Users(name=name, email=email, password=password)
+        user = Users(name=name, password=password)
         db.session.add(user)
         db.session.commit()
 
         session['logged_in'] = True
-        session['profile'] = {'id': user.id, 'name': user.name, 'email': user.email, 'icon': user.icon, 'score': user.score}
+        session['profile'] = {'id': user.id, 'name': user.name, 'icon': user.icon, 'score': user.score}
         return 0
 
     # 0 => Deleted User
@@ -155,24 +152,21 @@ class Profile:
     # 2 => User not exist
     # 3 => Already used by other user
     @staticmethod
-    def updateData(name: str, email: str) -> int:
+    def updateData(name: str) -> int:
         res, user = Profile.IsLoggedInAndExists()
         if res != 0:
             return res
 
         pid = session.get('profile')['id']
         nameUser = Users.query.filter_by(name=name).first()
-        emailUser = Users.query.filter_by(email=email).first()
-        if (nameUser and nameUser.id != pid) or (emailUser and emailUser.id != pid):
+        if nameUser and nameUser.id != pid:
             return 3
 
         user.name = name
-        user.email = email
         db.session.commit()
 
         profile = session['profile']
         profile['name'] = name
-        profile['email'] = email
         session['profile'] = profile
 
         return 0

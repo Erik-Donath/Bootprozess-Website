@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, url_for, render_template, request, session
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, EmailField, SubmitField
-from wtforms.validators import InputRequired, Email, Length
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length
 from flask_wtf.csrf import CSRFProtect
 
 from .user import Profile
@@ -18,16 +18,8 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     username = StringField(validators=[InputRequired(), Length(min=3, max=15)])
-    email = EmailField(validators=[InputRequired(), Email(), Length(min=5, max=50)])
     password = PasswordField(validators=[InputRequired(), Length(min=8)])
     submit = SubmitField('Registrieren')
-
-
-class UpdateForm(FlaskForm):
-    username = StringField(validators=[InputRequired(), Length(min=3, max=15)])
-    email = EmailField(validators=[InputRequired(), Email(), Length(min=5, max=50)])
-    password = PasswordField(validators=[InputRequired(), Length(min=8)])
-    submit = SubmitField('Ändern')
 
 
 @blueprint.route('/account/login', methods=['GET', 'POST'])
@@ -64,7 +56,7 @@ def register():
         reasons = genReasons(form.errors)
         return render_template('account/register.html', route="account", failed="validation", reasons=reasons, profile=Profile.getProfile())
 
-    res = Profile.register(form.username.data, form.email.data, form.password.data)
+    res = Profile.register(form.username.data, form.password.data)
     if res == 1:
         return redirect(url_for('account.view'))
     if res == 2:
@@ -92,7 +84,7 @@ def view():
     if not session.get('logged_in'):
         return redirect(url_for('account.login'))
 
-    return render_template('account/view.html', route="account", form=UpdateForm(), profile=Profile.getProfile())
+    return render_template('account/view.html', route="account", profile=Profile.getProfile())
 
 
 @blueprint.route('/account/set/icon/<icon>', methods=['GET', 'POST'])
@@ -106,34 +98,11 @@ def updateIcon(icon: int):
     return redirect(url_for('account.view'))
 
 
-@blueprint.route('/account/set/data', methods=['POST'])
-def updateData():
-    form = UpdateForm()
-    if not form.validate_on_submit():
-        reasons = genReasons(form.errors)
-        return render_template("account/set_data_failed.html", failed="validation", reasons=reasons, route="account", profile=Profile.getProfile())
-
-    if not Profile.checkPassword(form.password.data):
-        return render_template("account/set_data_failed.html", failed="wrong_password", route="account", profile=Profile.getProfile())
-
-    res = Profile.updateData(form.username.data, form.email.data)
-
-    if res == 1:
-        return redirect(url_for('account.login'))
-    if res == 2:
-        return redirect(url_for('account.register'))
-    if res == 3:
-        return render_template("account/set_data_failed.html", failed="data_used", route="account", profile=Profile.getProfile())
-    return redirect(url_for('account.view'))
-
-
 def genReasons(errors):
     reasons = []
     for field, errors in errors.items():
         if field == "username":
             reasons.append("Der Nutzername muss zwischen 3 und 30 Buchstaben lang sein.")
-        elif field == "email":
-            reasons.append("Die E-Mail muss zwischen 5 und 50 Buchstaben lang sein und valide sein.")
         elif field == "password":
             reasons.append("Das Passwort muss mindestens 8 Buchstaben lang sein.")
         else:
