@@ -5,9 +5,9 @@ Diese Website ist in Flask unter Python geschrieben worden. Sie enthält:
 - Eine Startseite
 - Impressum und Quellen
 - Bootprozess
-    - Generell
     - Windows
     - Linux
+    - MacOS
 - Quiz mit Leaderboard (Account benötigt)
 - Account System - Registrierung, Login, Logout, View, Delete
 
