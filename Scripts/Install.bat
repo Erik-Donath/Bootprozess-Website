@@ -1,5 +1,6 @@
 @echo off
 @title Installing
+cd ..
 
 echo - Installing Python3
 @echo on

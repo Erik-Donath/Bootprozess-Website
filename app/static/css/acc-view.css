@@ -1,0 +1,14 @@
+.profile-icon {
+    a {
+        border: none;
+        border-radius: 0;
+        padding: 70px 0 0 0;
+        margin: 10px 0;
+        background-color: #ffffff;
+    }
+    a:hover {
+        background-color: #00a0d6;
+        border: white;
+        border-radius: 5px;
+    }
+}

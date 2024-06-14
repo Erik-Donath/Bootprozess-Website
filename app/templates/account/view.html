@@ -1,23 +1,8 @@
 {% extends 'base.html' %}
 {% set title = "Einstellungen"%}
-{% set text_class = "black" %}
+{% set text_class = "white" %}
 {% block head %}
-    <style>
-    .profile-icon {
-        a {
-            border: none;
-            border-radius: 0;
-            padding: 70px 0 0 0;
-            margin: 10px 0;
-            background-color: #ffffff;
-        }
-        a:hover {
-            background-color: #00a0d6;
-            border: white;
-            border-radius: 5px;
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/acc-view.css') }}">
 {% endblock %}
 {% block main %}
     <div class="centered-container form">

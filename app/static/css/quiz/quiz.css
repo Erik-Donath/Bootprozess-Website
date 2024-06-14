@@ -1,0 +1,8 @@
+.question p, a, label, input {
+    text-decoration: none;
+}
+
+.question-title {
+    font-weight: bold;
+    font-size: 20pt;
+}

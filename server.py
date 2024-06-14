@@ -8,7 +8,7 @@ def application(environ, start_response):
 
 
 if __name__ == '__main__':
-    host = '10.254.1.223'
+    host = '0.0.0.0'
     port = 80
 
     httpd = make_server(host, port, application)

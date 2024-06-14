@@ -1,16 +1,8 @@
 {% extends 'base.html' %}
 {% set title = "Quiz" %}
-{% set text_class = "black" %}
+{% set text_class = "white" %}
 {% block head %}
-	<style>
-        .question p, a, label, input {
-            text-decoration: none;
-        }
-        .question-title {
-            font-weight: bold;
-            font-size: 20pt;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz/quiz.css') }}">
 {% endblock %}
 {% block main %}
     <div class="quiz">

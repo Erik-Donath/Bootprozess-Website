@@ -1,15 +1,8 @@
 {% extends 'base.html' %}
 {% set title = "Home" %}
-{% set text_class = "black" %}
-{% block head %}
-    <style>
-    body {
-        /*background-image: url("{{ url_for('static', filename='assets/GIF.gif') }}");*/
-        /*background-image: url("{{ url_for('static', filename='assets/daten2.webp') }}");*/
-    }
-    </style>
-{% endblock %}
+{% set text_class = "white" %}
 {% block main %}
+    <br><br>
 	<div class="centered-container">
         <h1>Willkommen{{ " " + profile.name if profile }}!</h1>
         <p>Hier erfahren Sie mehr über den Bootprozess am Beispiel Windows und Linux. Um mehr zu erfahren, klicken Sie bitte auf Info. Nach dem Lesen können Sie auch gerne an unserem Quiz teilnehmen. Dafür können Sie den Button Quiz nutzen.</p>

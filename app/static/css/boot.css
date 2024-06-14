@@ -2,10 +2,16 @@
     box-sizing: border-box;
 }
 
-/* Set a background color */
-body {
-    background-color: #474e5d;
-    font-family: Helvetica, sans-serif;
+.platform-center {
+    text-align: center;
+}
+
+.platform-logo {
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 /* The actual timeline (the vertical ruler) */
@@ -129,14 +135,15 @@ body {
 
     /* Make all right containers behave like the left ones */
     .content-right {
-        left: 0%;
+        left: 0;
     }
 }
 
-
-.content img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid #00000000;
+@keyframes lazy-load {
+    0% {
+        transform: scale(0, 0);
+    }
+    50% {
+        transform: scale(1, 1);
+    }
 }

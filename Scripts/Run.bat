@@ -1,5 +1,6 @@
 @echo off
 @title Webserver - Bootprozess
+cd ..
 
 if not exist %CD%/venv/ call Install.bat
 

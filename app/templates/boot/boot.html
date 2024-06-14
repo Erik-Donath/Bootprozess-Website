@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% set title = "Bootprozess - " + title %}
+{% set text_class = "white" %}
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/boot.css') }}">
+{% endblock %}
+{% block header %}
+    <div class="navbar subbar small">
+        <ul>
+            <li class="left"><a {% if subbar == "windows" %}class="active"{% endif %} href="/boot/windows"><b>Windows</b></a></li>
+            <li class="left"><a {% if subbar == "linux"   %}class="active"{% endif %} href="/boot/linux"><b>Linux</b></a></li>
+            <li class="left"><a {% if subbar == "macos"   %}class="active"{% endif %} href="/boot/macos"><b>MacOS</b></a></li>
+        </ul>
+    </div>
+{% endblock %}
+{% block main %}
+    <div class="platform-center">
+        <img class="platform-logo" src="{{ url_for('static', filename="assets/boot/windows.webp") }}" alt="Windows Logo" width="140" height="100">
+    </div>
+    <div class="timeline">
+        {% block content %}
+        {% endblock %}
+    </div>
+{% endblock %}
