@@ -19,7 +19,7 @@ Unter 'instance/App.db' befindet sich die Datenbank. Diese enthält die Table 'U
 ## Ausführen
 Unter dem Verzeichnis 'Scripts/' befinden sich Windows skripts zum Ausführen und installieren des Servers. ('Scripts/Install.bat', 'Scripts/Run.bat')
 Achtung: Install.bat installiert Python und die relevanten Softwarepakete als virtuelle Umgebung unter 'venv/'. Folgende wege exsistieren um die Anwendung auszuführen:
->**Ausführen der 'Scripts/Run.bat' Datei**
+<br>**Der einfachste Weg ist es, die 'Scripts/Run.bat' Datei auszuführen.**
 
 ## Datenbank Einträge
 
