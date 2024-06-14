@@ -20,7 +20,7 @@
                 <ul>
                     <li class="left "><a {% if route=="index"       %}class="active"{% endif %} href="/index"><b>Home</b></a></li>
                     <li class="left "><a {% if route=="boot"        %}class="active"{% endif %} href="/boot/windows"><b>Bootprozess</b></a></li>
-                    <li class="left "><a {% if route=="impresum"    %}class="active"{% endif %} href="/impresum"><b>Impressum</b></a></li>
+                    <li class="left "><a {% if route=="impressum"    %}class="active"{% endif %} href="/impressum"><b>Impressum</b></a></li>
                     <li class="left "><a {% if route=="quellen"     %}class="active"{% endif %} href="/quellen"><b>Quellen</b></a></li>
 
                     <li class="right profile">
@@ -47,7 +47,7 @@
         <footer>
             {% block footer %}
             {% endblock %}
-            <p class="copyright {{ text_class }}">&copy; 2024 Erik Donath. All rights reserved. <a class="underlined {{ text_class }}" href="/impresum">Impresum</a></p>
+            <p class="copyright {{ text_class }}">&copy; 2024 Erik Donath. All rights reserved. <a class="underlined {{ text_class }}" href="/impressum">Impressum</a></p>
         </footer>
     </body>
 </html>

@@ -8,6 +8,7 @@ from . import quiz
 
 
 # Setup Flask
+print("Setup App")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "x=-p/2+sqrt((p/2)^2-q)"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///App.db'
@@ -28,3 +29,5 @@ account.csrf.init_app(app)
 # Create Database with context
 with app.app_context():
     database.db.create_all()
+
+print("App ready")

@@ -22,18 +22,18 @@ def home():
     return render_template('index.html', route="index", profile=Profile.getProfile())
 
 
-@blueprint.route('/impresum', methods=['GET', 'POST'])
-def impresum():
+@blueprint.route('/impressum', methods=['GET', 'POST'])
+def impressum():
     if request.method == 'POST':
         form = KontaktForm()
         if not form.validate_on_submit():
-            return redirect(url_for('main.impresum', _anchor="kontakt"))
+            return redirect(url_for('main.impressum', _anchor="kontakt"))
         contact = Contacts(form.firstname.data, form.lastname.data, form.subject.data)
         db.session.add(contact)
         db.session.commit()
 
         print(f"Stored Contact: '{request.form['firstname']} {request.form['lastname']}': {request.form['subject']}")
-    return render_template('impresum.html', route="impresum", profile=Profile.getProfile(), form=KontaktForm())
+    return render_template('impressum.html', route="impressum", profile=Profile.getProfile(), form=KontaktForm())
 
 
 @blueprint.route('/quellen')
