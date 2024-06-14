@@ -46,7 +46,7 @@ def leaderboard():
             'max_score': board[0].score,
             'min_score': board[-1].score
         })
-        # Weil APIs cool sind. Wird safe irgendwer in naher Zukunft brauchen.
+        # Weil APIs cool sind. Wird safe irgendwer in naher Zukunft brauchen...
     else:
         return render_template('quiz/leaderboard.html', route="leaderboard", board=board, profile=Profile.getProfile())
 
