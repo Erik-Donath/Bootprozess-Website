@@ -1,56 +1,40 @@
-{% extends 'base.html' %}
-{% set title = "Bootprozess - Windows" %}
-{% set text_class = "white" %}
-{% block head %}
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/boot.css') }}">
-{% endblock %}
-{% block header %}
-    <div class="navbar subbar small">
-        <ul>
-            <li class="left"><a class="active" href="/boot/windows"><b>Windows</b></a></li>
-            <li class="left"><a href="/boot/linux"><b>Linux</b></a></li>
-            <li class="left"><a href="/boot/macos"><b>MacOS</b></a></li>
-        </ul>
+{% extends 'boot/base.html' %}
+{% set title = "Windows" %}
+{% set subbar = "windows" %}
+{% set platform_src = "assets/boot/windows.webp" %}
+{% block content %}
+    <div class="container content-left">
+        <div class="content">
+            <h2>1. BIOS / UEFI</h2>
+            <p>Sobald der Computer eingeschaltet wird, wird als erstes Das BIOS (In neueren Modellen UEFI) geladen und ausgeführt. Dieses Initialisiert alle nötigen Hardwarekomponenten.</p>
+            <hr>
+            <p>UEFI besitzt einen integrierten Boot-Manager, welcher dem Benutzter die möglichkeit, bietet der, Startgerät auszuwählen sowie den Start in das BIOS.</p>
+        </div>
     </div>
-{% endblock %}
-{% block main %}
-    <div class="platform-center">
-        <img class="platform-logo" src="{{ url_for('static', filename="assets/boot/windows.webp") }}" alt="Windows Logo" width="140" height="100">
+    <div class="container content-right">
+        <div class="content">
+            <h2>2. POST (<u>P</u>ower <u>O</u>n <u>S</u>elf <u>T</u>est)</h2>
+            <p>Hier führt das BIOS eine reihe an Test durch, um Sicher zu stellen, dass die Hardwarekomontent ordnungsgemäß funktionieren.</p>
+        </div>
     </div>
-    <div class="timeline">
-        <div class="container content-left">
-            <div class="content">
-                <h2>1. BIOS / UEFI</h2>
-                <p>Sobald der Computer eingeschaltet wird, wird als erstes Das BIOS (In neueren Modellen UEFI) geladen und ausgeführt. Dieses Initialisiert alle nötigen Hardwarekomponenten.</p>
-                <hr>
-                <p>UEFI besitzt einen integrierten Boot-Manager, welcher dem Benutzter die möglichkeit, bietet der, Startgerät auszuwählen sowie den Start in das BIOS.</p>
-            </div>
+    <div class="container content-left">
+        <div class="content">
+            <h2>3. Boot Sequenz</h2>
+            <p>Das Bios sucht nach startfähige Geräte(HDD, SSD, M2, ...) und führt das erste in der Startreihenfolge aus. Dann lädt das BIOS den MBR und führt den enthaltenden Bootloader aus.</p>
+            <hr>
+            <p>Das UEFI enthält auch eine Secure-Boot Funktion, welche überprüft, ob das Betriebssystem vor dem Booten manipuliert wurde.</p>
         </div>
-        <div class="container content-right">
-            <div class="content">
-                <h2>2. POST (<u>P</u>ower <u>O</u>n <u>S</u>elf <u>T</u>est)</h2>
-                <p>Hier führt das BIOS eine reihe an Test durch, um Sicher zu stellen, dass die Hardwarekomontent ordnungsgemäß funktionieren.</p>
-            </div>
+    </div>
+    <div class="container content-right">
+        <div class="content">
+            <h2>4. MBR (<u>M</u>aster <u>B</u>oot <u>R</u>ecord)</h2>
+            <p>Der Bootloader im MBR ist zuständig für das Laden des restlichen Betriebssystems wie z.b. den Kernel. </p>
         </div>
-        <div class="container content-left">
-            <div class="content">
-                <h2>3. Boot Sequenz</h2>
-                <p>Das Bios sucht nach startfähige Geräte(HDD, SSD, M2, ...) und führt das erste in der Startreihenfolge aus. Dann lädt das BIOS den MBR und führt den enthaltenden Bootloader aus.</p>
-                <hr>
-                <p>Das UEFI enthält auch eine Secure-Boot Funktion, welche überprüft, ob das Betriebssystem vor dem Booten manipuliert wurde.</p>
-            </div>
-        </div>
-        <div class="container content-right">
-            <div class="content">
-                <h2>4. MBR (<u>M</u>aster <u>B</u>oot <u>R</u>ecord)</h2>
-                <p>Der Bootloader im MBR ist zuständig für das Laden des restlichen Betriebssystems wie z.b. den Kernel. </p>
-            </div>
-        </div>
-        <div class="container content-left">
-            <div class="content">
-                <h2>5. Betriebssystem</h2>
-                <p>Sobald der Bootloader das Betriebssystem geladen hat, gibt es die Kontrolle and dieses ab. Der Kernel lädt nun Treiber und initialisiert Hardware- sowie Softwarekomponenten.</p>
-            </div>
+    </div>
+    <div class="container content-left">
+        <div class="content">
+            <h2>5. Betriebssystem</h2>
+            <p>Sobald der Bootloader das Betriebssystem geladen hat, gibt es die Kontrolle and dieses ab. Der Kernel lädt nun Treiber und initialisiert Hardware- sowie Softwarekomponenten.</p>
         </div>
     </div>
 {% endblock %}

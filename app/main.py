@@ -44,7 +44,7 @@ def quellen():
 @blueprint.route('/boot/')
 @blueprint.route('/boot/windows')
 def boot_windows():
-    return render_template('boot/w.html', route="boot", profile=Profile.getProfile())
+    return render_template('boot/windows.html', route="boot", profile=Profile.getProfile())
 
 
 @blueprint.route('/boot/linux')
