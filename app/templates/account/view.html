@@ -10,7 +10,7 @@
         <p>Hier kannst du nach Belieben dein Account verändern.</p>
         <p><b>Dein Score ist: {{ profile.score }}</b></p>
 
-        <div class = "form selection">
+        <section id="icon" class = "form selection">
             <div class="profile-icon">
                 <h2>Ändere dein Aussehen</h2>
                 <a class="small" href="/account/set/icon/1"><img src="{{ url_for('static', filename="assets/profiles/1.png") }}" alt ="Profil 1" width="80" height="80"></a>
@@ -19,10 +19,15 @@
                 <a class="small" href="/account/set/icon/4"><img src="{{ url_for('static', filename="assets/profiles/4.png") }}" alt ="Profil 4" width="80" height="80"></a>
             </div>
             <br><br>
-            <a class="small" href="/account/logout">Ausloggen</a>
-            <a class="small" href="/quiz/quiz">Am Quiz teilnehmen</a>
-            <a class="small" href="/quiz/leaderboard">Zum Leaderboard</a>
-        </div>
+            <div class="acc-view">
+                <a class="small" href="/account/logout">Ausloggen</a>
+                <a class="small" href="/account/delete">Löschen</a>
+            </div>
+            <div class="acc-view">
+                <a class="small" href="/quiz/quiz">Zum Quiz</a>
+                <a class="small" href="/quiz/leaderboard">Zum Leaderboard</a>
+            </div>
+        </section>
         <br>
     </div>
 {% endblock %}

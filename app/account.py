@@ -95,7 +95,7 @@ def updateIcon(icon: int):
         return redirect(url_for('account.login'))
     if res == 2:
         return redirect(url_for('account.register'))
-    return redirect(url_for('account.view'))
+    return redirect(url_for('account.view', _anchor="icon"))
 
 
 def genReasons(errors):

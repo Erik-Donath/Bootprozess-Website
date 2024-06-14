@@ -12,3 +12,8 @@
         border-radius: 5px;
     }
 }
+
+.acc-view {
+    padding-top: 0;
+    padding-bottom: 30px;
+}
