@@ -8,22 +8,49 @@
     <div class="quiz">
         <form class="centered-container form" action="/quiz/quiz" method="post">
             <div class="question">
-                <p class="question-title">Frage 1</p>
-                <label for="q1-1">Antwort 1</label>
-                <input type="checkbox" id="q1-1" name="q1_1"><br>
-                <label for="q1-2">Antwort 2</label>
-                <input type="checkbox" id="q1-2" name="q1_2"><br>
-                <label for="q1-3">Antwort 3</label>
-                <input type="checkbox" id="q1-3" name="q1_3"><br>
+                <p class="question-title">1. Was bedeutet das Kürzel POST?</p>
+                <input type="checkbox" id="q1-1" name="q1_1">
+                <label for="q1-1">Power on self Test</label><br>
+                <input type="checkbox" id="q1-2" name="q1_2">
+                <label for="q1-2">Post on selected Tool</label><br>
+                <input type="checkbox" id="q1-3" name="q1_3">
+                <label for="q1-3">Print on sequenced Termination</label><br>
             </div><br>
             <div class="question">
-                <p class="question-title">Frage 2</p>
-                <label for="q2-1">Antwort 1</label>
-                <input type="checkbox" id="q2-1" name="q2_1"><br>
-                <label for="q2-2">Antwort 2</label>
-                <input type="checkbox" id="q2-2" name="q2_2"><br>
-                <label for="q2-3">Antwort 3</label>
-                <input type="checkbox" id="q2-3" name="q2_3"><br>
+                <p class="question-title">2. Wann hört der Bootprozess auf?</p>
+                <input type="checkbox" id="q2-1" name="q2_1">
+                <label for="q2-1">Sobald das BIOS das Betriebssystem lädt</label><br>
+                <input type="checkbox" id="q2-2" name="q2_2">
+                <label for="q2-2">Sobald alle Dienste geladen worden sind</label><br>
+                <input type="checkbox" id="q2-3" name="q2_3">
+                <label for="q2-3">Sobald das Betriebssystem vollständig geladen ist</label><br>
+            </div><br>
+            <div class="question">
+                <p class="question-title">3. Bei welchem Betriebssystem wird als ein erster Schritt die initiale Ram disk geladen?</p>
+                <input type="checkbox" id="q3-1" name="q3_1">
+                <label for="q3-1">Windows</label><br>
+                <input type="checkbox" id="q3-2" name="q3_2">
+                <label for="q3-2">Linux</label><br>
+                <input type="checkbox" id="q3-3" name="q3_3">
+                <label for="q3-3">MacOS</label><br>
+            </div><br>
+            <div class="question">
+                <p class="question-title">4. Welcher Code ist im MBR vorhanden?</p>
+                <input type="checkbox" id="q4-1" name="q4_1">
+                <label for="q4-1">Das Init-System</label><br>
+                <input type="checkbox" id="q4-2" name="q4_2">
+                <label for="q4-2">Der Bootloader Code</label><br>
+                <input type="checkbox" id="q4-3" name="q4_3">
+                <label for="q4-3">Der Kernel ist Bestandteil des MBRs</label><br>
+            </div><br>
+            <div class="question">
+                <p class="question-title">5. Bei welchen Systemen ist ein Bootloader notwendig? (Multiple Choice)</p>
+                <input type="checkbox" id="q5-1" name="q5_1">
+                <label for="q5-1">Windows</label><br>
+                <input type="checkbox" id="q5-2" name="q5_2">
+                <label for="q5-2">Linux</label><br>
+                <input type="checkbox" id="q5-3" name="q5_3">
+                <label for="q5-3">MacOS</label><br>
             </div><br>
             <div class="form align-center small">
                 {{ form.hidden_tag() }}

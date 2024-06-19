@@ -1,0 +1,24 @@
+Was bedeutet das Kürzel POST?
+- Power on self Test
+- Post on selected Tool
+- Print on sequenced Termination
+
+Wann hört der Bootprozess auf?
+- Sobald das BIOS das Betriebsystem lädt
+- Sobald alle Dienste geladen worden sind
+- Sobald das Betriebsystem vollständig geladen und einsatztbereit ist
+
+Bei welchem Betriebssystem wird als ein erster Schritt die initiale Ram disk geladen?
+- Windows
+- Linux
+- MacOS
+
+Welcher Code ist im MBR vorhanden?
+- Das Init-System
+- Der Bootloader Code
+- Der Kernel ist Bestandteil des MBR's
+
+Bei welchen Systemen ist ein Bootloader notwendig? (Multiple Choice)
+- Windows
+- Linux
+- MacOS
