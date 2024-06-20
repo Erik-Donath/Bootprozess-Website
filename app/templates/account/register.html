@@ -18,7 +18,7 @@
         {% else %}
             <h1>Ein Fehler ist aufgetreten</h1>
             {% if   failed=="validation"    %}<p>Bitte gebe die Daten vollständig ein. Begründung:</p><ul>{% for reason in reasons %}<li>{{ reason }}</li>{% endfor %}</ul>
-            {% elif failed=="already_exist" %}<p>Der Nutzername oder die E-Mail sind bereits vergeben worden.</p>
+            {% elif failed=="already_exist" %}<p>Der Nutzername ist bereits vergeben worden.</p>
             {% else %}<p>Beep! Boop! Fehler!</p><br><p>Fehler Code: '{{ failed }}'</p>{% endif %}
             <a class="small" href="/account/register">Zurück zur Registrierseite</a>
             <br>
