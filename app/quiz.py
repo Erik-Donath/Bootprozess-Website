@@ -21,13 +21,32 @@ class Entry:
 
 
 class Quiz(FlaskForm):
-    q1_1 = BooleanField('q1_1')
-    q1_2 = BooleanField('q1_2')
-    q1_3 = BooleanField('q1_3')
+    # Leider ist es nicht möglich das dynamischer zu schreiben
 
-    q2_1 = BooleanField('q2_1')
-    q2_2 = BooleanField('q2_2')
-    q2_3 = BooleanField('q2_3')
+    # Question 1, Ans: 1
+    q1_1 = BooleanField('q1_1', default=False)
+    q1_2 = BooleanField('q1_2', default=False)
+    q1_3 = BooleanField('q1_3', default=False)
+
+    # Question 2, Ans: 3
+    q2_1 = BooleanField('q2_1', default=False)
+    q2_2 = BooleanField('q2_2', default=False)
+    q2_3 = BooleanField('q2_3', default=False)
+
+    # Question 3, Ans: 2
+    q3_1 = BooleanField('q3_1', default=False)
+    q3_2 = BooleanField('q3_2', default=False)
+    q3_3 = BooleanField('q3_3', default=False)
+
+    # Question 4, Ans: 2
+    q4_1 = BooleanField('q4_1', default=False)
+    q4_2 = BooleanField('q4_2', default=False)
+    q4_3 = BooleanField('q4_3', default=False)
+
+    # Question 5, Ans: 1, 2, 3
+    q5_1 = BooleanField('q5_1', default=False)
+    q5_2 = BooleanField('q5_2', default=False)
+    q5_3 = BooleanField('q5_3', default=False)
 
     submit = SubmitField('Absenden')
 
@@ -60,7 +79,7 @@ def quiz():
     if request.method != 'POST':
         return render_template('quiz/quiz.html', route="quiz", form=Quiz(), profile=Profile.getProfile())
 
-    score = calculateScore(request.form)
+    score = calculateScore(Quiz(request.form))
     res = Profile.updateScore(score)
 
     if res == 1:
@@ -71,25 +90,22 @@ def quiz():
     return redirect(url_for('quiz.leaderboard'))
 
 
-def calculateScore(form: dict):
-    results: dict[str, [int]] = {}
-    for (questionId, _) in dict(form).items():
-        if not questionId.startswith("q"):
-            continue
+def calculateScore(form: Quiz):
+    score: int = 0
 
-        idParts = questionId.split("_")
-        name = idParts[0]
-        answer = idParts[1]
-
-        if not results.get(name):
-            results[name] = []
-
-        results[name].append(answer)
-
-    score = 0
-    right_answers = {'q1': ['1'], 'q2': ['2']}
-    for (name, answers) in right_answers.items():
-        if name in results:
-            score += set(answers) == set(results[name]) if len(answers) else 0
+    if form.q1_1.data and not form.q1_2.data and not form.q1_3.data:
+        score += 1
+    if not form.q2_1.data and not form.q2_2.data and form.q2_3.data:
+        score += 1
+    if not form.q3_1.data and form.q3_2.data and not form.q3_3.data:
+        score += 1
+    if not form.q4_1.data and form.q4_2.data and not form.q4_3.data:
+        score += 1
+    if form.q5_1.data:
+        score += 1
+    if form.q5_2.data:
+        score += 1
+    if form.q5_3.data:
+        score += 1
 
     return score
