@@ -8,5 +8,5 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-#CMD ["python", "server.py"]
+EXPOSE 80
 ENTRYPOINT ["python3", "server.py"]
