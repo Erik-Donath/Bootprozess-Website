@@ -5,26 +5,30 @@
 {% block content %}
     <div class="container content-left">
         <div class="content">
-            <h2>1. BIOS / UEFI</h2>
-            <p>Es werden eine Reihe an überprüfungen durchgeführt und initialisiert die Hardware. Dann wird ein startfähiges Gerät gesucht und die Kontrolle wird an den Bootloader übergeben.</p>
+            <h2>1. POST (<u>P</u>ower <u>O</u>n <u>S</u>elf <u>T</u>est)</h2>
+            <p>Es werden eine Reihe an überprüfungen durchgeführt und es kann je nach Problem auch eine Fehlermeldung angezeigt werden.</p>
         </div>
     </div>
     <div class="container content-right">
         <div class="content">
-            <h2>2. Bootloader</h2>
-            <p>Dem Nutzer wird ein Menü mit Startoptionen angezeigt. Viele Linux Distributionen nutzen den GRUB Bootloader (<u>GR</u>and <u>U</u>nified <u>B</u>ootloader). Der Bootloader lädt dann den Linux-Kernel und die initiale RAM-Disk in dn Speicher. Dann wird die Kontrolle an das Init-System weitergegeben.</p>
+            <h2>2. Firmware</h2>
+            <p>Es werden die Bootfähigen Gerät überprüft um zu bestimmen, von welchem Gerät gebootet werden soll. Sollte kein Bootfähiges Gerät gefunden worden sein wird eine Fehlermeldung angezeigt.</p>
+            <hr>
+            <p>Firmware = Die Software, welche die Hardware steuert</p>
         </div>
     </div>
     <div class="container content-left">
         <div class="content">
-            <h2>3. Init-System</h2>
-            <p>Diese lädt alle nötigen Dienste (Services), Treiber und andere Prozess.</p>
+            <h2>3. Bootloader</h2>
+            <p>Die Firmware lädt nun den Bootloader und übergibt die Kontrolle an ihn. Unter MacOs heißt der Bootloader boot.efi. Der Bootloader lädt nun den Kernel des Betriebssystems.</p>
         </div>
     </div>
     <div class="container content-right">
         <div class="content">
-            <h2>4. Betriebssystem</h2>
-            <p>Da das Betriebssystem nun vollständig geladen ist, endet hier der Bootprozess.</p>
+            <h2>4. Kernel</h2>
+            <p>Der Kernel initialisiert nun einige Hardware sowie Softwarekomponenten, wie z.b. Treiber und Dienste. Danach ist der Mac einsatzbereit.</p>
+            <hr>
+            <p>Kernel = Das Kernsystem eines jeden Betriebssystems</p>
         </div>
     </div>
 {% endblock %}
