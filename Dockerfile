@@ -1,6 +1,6 @@
-FROM python:3.9-slim
+FROM python:3.12
 
-WORKDIR /app
+WORKDIR /data
 
 COPY requirements.txt .
 
@@ -10,3 +10,4 @@ COPY . .
 
 EXPOSE 80
 ENTRYPOINT ["python3", "server.py"]
+#CMD python3 server.py
