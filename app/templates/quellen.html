@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
 {% set title = "Quellen" %}
 {% set text_class = "white" %}
-{% block head %}
-	<style>
-    .quellen {
-        font-size: 40px;
-        padding: 20px;
-        list-style: none;
-    }
-    </style>
-{% endblock %}
 {% block main %}
-    <ul class="quellen">
-        <li>Quelle 1 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
-        <li>Quelle 2 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
-        <li>Quelle 3 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
-        <li>Quelle 4 - <a class="underlined dark" href="https://de.wikipedia.org/">wikipedia</a></li>
-    </ul>
+    <div class="centered-container">
+        <h3>Informationen</h3>
+        <ul>
+            <li>1. <a class="underlined dark" target="_blank" href="https://www.youtube.com/watch?v=q_i439CqAHA">Bootprozess von Florian Dalwigk (YT)</a></li>
+            <li>2. <a class="underlined dark" target="_blank" href="https://www.linkedin.com/posts/bytebytego_systemdesign-coding-interviewtips-activity-7207604812610240512-s8_k">Beitrag von ByteByteGo auf Linkedin</a></li>
+            <li>3. <a class="underlined dark" target="_blank" href="https://www.youtube.com/watch?v=KkenLT8S9Hs">How does an OS boot? von Low Byte Productions (Yt)</a></li>
+        </ul>
+        <h3>Bilder</h3>
+        <ul>
+            <li>1. <a class="underlined dark" target="_blank" href="https://1000logos.net/linux-logo/">Linux Logo</a></li>
+            <li>2. <a class="underlined dark" target="_blank" href="https://de.wikipedia.org/wiki/Datei:Windows_logo_-_2021.svg">Windows Logo</a></li>
+            <li>3. <a class="underlined dark" target="_blank" href="https://blog.leoprinting.de/blog/die-geschichte-vom-apple-logo">MacOS Logo</a></li>
+        </ul>
+    </div>
 {% endblock %}
